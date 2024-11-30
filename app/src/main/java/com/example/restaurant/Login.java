@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        // Définir une action pour le lien "Sign Up"
+
         signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,23 +90,22 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // Vérifier si un utilisateur est connecté (non-nul) et mettre à jour l'UI en conséquence.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            // Si l'utilisateur est déjà connecté, rediriger vers MainActivity
-            Intent intent = new Intent(Login.this, MainActivity.class);
-            startActivity(intent);
-            finish(); // Fermer l'activité de connexion
-        }
-    }
+    // Supprimer la méthode onStart() pour éviter la redirection automatique
+    // @Override
+    // protected void onStart() {
+    //     super.onStart();
+    //     FirebaseUser currentUser = auth.getCurrentUser();
+    //     if (currentUser != null) {
+    //         Intent intent = new Intent(Login.this, Acceuilpage.class);
+    //         startActivity(intent);
+    //         finish(); // Fermer l'activité de connexion
+    //     }
+    // }
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            // L'utilisateur est connecté, vous pouvez rediriger vers MainActivity par exemple
-            Intent intent = new Intent(Login.this, MainActivity.class);
+            // L'utilisateur est connecté, rediriger vers Acceuilpage
+            Intent intent = new Intent(Login.this, Acceuilpage.class);
             startActivity(intent);
             finish(); // Fermer l'activité de connexion
         } else {

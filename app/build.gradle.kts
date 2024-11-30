@@ -26,6 +26,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,14 +34,21 @@ android {
 }
 
 dependencies {
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    // Google Maps SDK
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+
+    // Firebase
+    implementation("com.google.firebase:firebase-auth:22.0.0")
+    implementation("com.google.firebase:firebase-database:20.2.2")
+
+    // Image loading library
+    implementation("com.squareup.picasso:picasso:2.71828")
     implementation(libs.activity)
-    implementation(libs.constraintlayout)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.database)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+
+
 }

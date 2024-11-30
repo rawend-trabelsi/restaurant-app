@@ -95,7 +95,12 @@ public class Register extends AppCompatActivity {
                         Log.d(TAG, "createUserWithEmail:success");
                         FirebaseUser user = auth.getCurrentUser();
                         Toast.makeText(Register.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                        updateUI(user);
+
+                        // Rediriger vers la page de connexion après l'inscription
+                        Intent intent = new Intent(Register.this, Login.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); // Pour s'assurer que la page de connexion est la seule activité active
+                        startActivity(intent);
+                        finish(); // Fermer l'activité d'enregistrement
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         Toast.makeText(Register.this, "Authentication failed: " + task.getException().getMessage(),
@@ -104,6 +109,7 @@ public class Register extends AppCompatActivity {
                     }
                 });
     }
+
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
